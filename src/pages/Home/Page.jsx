@@ -5,6 +5,7 @@ import YellowButton from "../../components/ui/button";
 import { coursesPG } from "../../datas/coursesPg";
 import { coursesUG } from "../../datas/coursesUg";
 import { coursesDiploma } from "../../datas/Diploma";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState("online-pg");
@@ -153,10 +154,9 @@ export default function HomePage() {
           {/* Courses Grid */}
           <div className="grid grid-cols-1 gap-4 sm:gap-8 sm:grid-cols-3">
             {getCourses().map((course, index) => (
-              <a
-                href='https://google.com'
-                target='_blank'
-                rel='noreferrer'
+              <Link
+                to={`/course/${encodeURIComponent(course.name)}`}
+                state={{ course, category: selectedCategory }}
                 key={index}
                 className="overflow-hidden w-full border-2 border-[#9e9e9e] rounded-4xl hover:shadow-lg transition-shadow bg-white"
               >
@@ -170,7 +170,7 @@ export default function HomePage() {
                 <div className="p-2 text-center ">
                   <p className="font-semibold text-[#2a3572]">{course.name}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
