@@ -153,7 +153,10 @@ export default function HomePage() {
           {/* Courses Grid */}
           <div className="grid grid-cols-1 gap-4 sm:gap-8 sm:grid-cols-3">
             {getCourses().map((course, index) => (
-              <div
+              <a
+                href='https://google.com'
+                target='_blank'
+                rel='noreferrer'
                 key={index}
                 className="overflow-hidden w-full border-2 border-[#9e9e9e] rounded-4xl hover:shadow-lg transition-shadow bg-white"
               >
@@ -167,14 +170,14 @@ export default function HomePage() {
                 <div className="p-2 text-center ">
                   <p className="font-semibold text-[#2a3572]">{course.name}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
       {/* Contact Us Section */}
-      <section className='min-h-screen px-4 py-16 bg-white md:px-6 lg:px-8'>
+      <section className='px-4 py-10 md:px-6 lg:px-8'>
         <div className='max-w-6xl mx-auto'>
           <h2 className='text-[1.75em] md:text-[2.25em] lg:text-[2.75em] font-medium text-center text-[#2a3572] mb-2'>
             Get in Touch With Us
