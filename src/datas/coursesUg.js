@@ -1,8 +1,8 @@
-export const coursesUG=[
-    { name:"BBA" },
-    { name:"BCA" },
-    { name:"B.Com" },
-    { name:"B.Sc" },
-    { name:"BA" },
-    { name:"B.Tech" },
-  ]
+export const coursesUG = [
+  { name: "BBA", img: "courses1.jpg" },
+  { name: "BCA", img: "courses2.jpg" },
+  { name: "B.Com", img: "courses3.jpg" },
+  { name: "B.Sc", img: "courses4.jpg" },
+  { name: "BA", img: "courses5.jpg" },
+  { name: "B.Tech", img: "courses1.jpg" },
+];

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const pageLinks = [
-    { name: 'Home', link: '/' },
-    { name: 'About', link: '/' },
-    { name: 'Universities', link: '/' },
-    { name: 'Career', link: '/h' },
-    { name: 'Contact Us', link: '/h' },
-  ]
+    { name: "Home", link: "/" },
+    { name: "About", link: "/" },
+    { name: "Universities", link: "/" },
+    { name: "Career", link: "/h" },
+    { name: "Contact Us", link: "/h" },
+  ];
 
   return (
     <footer className="bg-[#1a2250] text-white">
@@ -16,7 +16,8 @@ export default function Footer() {
         <div className="space-y-4">
           <p className="text-2xl font-semibold">Nextgen</p>
           <p className="max-w-sm text-sm leading-6 text-white/80">
-            Find the right university, course, and mentor with guided support for your study journey.
+            Find the right university, course, and mentor with guided support
+            for your study journey.
           </p>
         </div>
 
@@ -25,7 +26,10 @@ export default function Footer() {
           <ul className="space-y-3 text-sm text-white/80">
             {pageLinks.map((item) => (
               <li key={item.name}>
-                <Link to={item.link} className="transition hover:text-[#facc42]">
+                <Link
+                  to={item.link}
+                  className="transition hover:text-[#facc42]"
+                >
                   {item.name}
                 </Link>
               </li>
@@ -48,5 +52,5 @@ export default function Footer() {
         © 2026 Nextgen. All rights reserved.
       </div>
     </footer>
-  )
+  );
 }
