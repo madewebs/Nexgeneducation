@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState("online-pg");
+  const tabButtonClass =
+    "inline-flex h-12 w-44 items-center justify-center rounded-2xl px-6 font-semibold transition-all";
 
   const courseImageMap = {
     "courses1.jpg":
@@ -32,10 +34,11 @@ export default function HomePage() {
       ...course,
       img: courseImageMap[course.img],
     })),
-    diploma: coursesDiploma.map((course) => ({
+    "others": coursesDiploma.map((course) => ({
       ...course,
       img: courseImageMap[course.img],
     })),
+    "placement-cell": [],
   };
 
   const getCourses = () => courseData[selectedCategory] || [];
@@ -114,15 +117,15 @@ export default function HomePage() {
 
       <section className="bg-[#232f65] rounded-4xl mx-2 py-6 md:py-10 mt-4 mb-10">
         <div className="w-full md:max-w-[80%] mx-auto px-6">
-          <p className="text-[1.5em] md:text-[2em] lg:text-[2.25em] font-medium text-center text-[#fefefe] mb-4 md:mb-4">
+          <p className="text-[1.65em] md:text-[2em] lg:text-[2.25em] font-medium text-center text-[#fefefe] mb-4 md:mb-4">
             20 + Online Courses
           </p>
 
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
             <button
               onClick={() => setSelectedCategory("online-pg")}
-              className={`px-4 py-2 rounded-2xl font-semibold transition-all ${
+              className={`${tabButtonClass} ${
                 selectedCategory === "online-pg"
                   ? "bg-[#edcf2e] text-white"
                   : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
@@ -132,7 +135,7 @@ export default function HomePage() {
             </button>
             <button
               onClick={() => setSelectedCategory("online-ug")}
-              className={`px-4 py-2 rounded-2xl font-semibold transition-all ${
+              className={`${tabButtonClass} ${
                 selectedCategory === "online-ug"
                   ? "bg-[#edcf2e] text-white"
                   : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
@@ -141,14 +144,24 @@ export default function HomePage() {
               Online UG
             </button>
             <button
-              onClick={() => setSelectedCategory("diploma")}
-              className={`px-4 py-2 rounded-2xl font-semibold transition-all ${
-                selectedCategory === "diploma"
+              onClick={() => setSelectedCategory("others")}
+              className={`${tabButtonClass} ${
+                selectedCategory === "others"
                   ? "bg-[#edcf2e] text-white"
                   : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
               }`}
             >
-              Diploma
+              Others
+            </button>
+            <button
+              onClick={() => setSelectedCategory("placement-cell")}
+              className={`${tabButtonClass} ${
+                selectedCategory === "placement-cell"
+                  ? "bg-[#edcf2e] text-white"
+                  : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
+              }`}
+            >
+              Placement Cell
             </button>
           </div>
           {/* Courses Grid */}
@@ -177,12 +190,12 @@ export default function HomePage() {
       </section>
 
       {/* Contact Us Section */}
-      <section className='px-4 py-10 md:px-6 lg:px-8'>
+      <section className='px-4 py-10 md:px-6 lg:px-8 bg-[#fefefe]'>
         <div className='max-w-6xl mx-auto'>
           <h2 className='text-[1.75em] md:text-[2.25em] lg:text-[2.75em] font-medium text-center text-[#2a3572] mb-2'>
             Get in Touch With Us
           </h2>
-          <p className='text-center text-[#4b4b4b] text-lg mb-8 '>
+          <p className='text-center text-[#4b4b4b] text-lg mb-8 leading-tight '>
             Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
           </p>
 

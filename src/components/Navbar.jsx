@@ -12,18 +12,10 @@ export default function Navbar() {
     },
     {
       name: "About",
-      link: "/",
+      link: "/about",
     },
     {
       name: "Universities",
-      link: "/",
-    },
-    {
-      name: "Career",
-      link: "/",
-    },
-    {
-      name: "Contact Us",
       link: "/",
     },
   ];
@@ -38,35 +30,39 @@ export default function Navbar() {
 
   return (
     <header className="relative z-50 w-full shadow-md bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-[95%] lg:max-w-[80%] items-center justify-between px-4 py-4 md:px-6 lg:px-8">
+      <div className="relative mx-auto flex max-w-[95%] items-center justify-between gap-4 px-4 py-4 md:max-w-[80%] md:px-6 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-[#2a3572] hover:text-[#edcf2e] transition-colors">
+        <Link
+          to="/"
+          className="flex shrink-0 items-center text-2xl font-bold leading-none text-[#2a3572] transition-colors hover:text-[#edcf2e]"
+        >
           Logoo
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="items-center hidden gap-8 md:flex lg:gap-10">
-          <nav className="flex items-center justify-center gap-6 lg:gap-8">
+        <div className="absolute hidden -translate-x-1/2 left-1/2 md:flex">
+          <nav className="flex items-center justify-center gap-6 lg:gap-10">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.link}
-                className="text-md font-medium text-[#2a3572] hover:text-[#edcf2e] transition-colors duration-200 relative group"
+                className="group relative inline-flex items-center py-2 text-md font-medium text-[#2a3572] transition-colors duration-200 hover:text-[#edcf2e]"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#edcf2e] group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-[#edcf2e] transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </nav>
-          <div className="shrink-0">
-            <YellowButton name="Suggest me a University" />
-          </div>
+        </div>
+
+        <div className="items-center hidden shrink-0 md:flex">
+          <YellowButton name="Suggest me a University" />
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col gap-1.5 p-2 focus:outline-none"
+          className="flex flex-col gap-1.5 p-2 focus:outline-none md:hidden"
           aria-label="Toggle menu"
         >
           <span
@@ -92,23 +88,23 @@ export default function Navbar() {
         <>
           {/* Overlay Backdrop */}
           <div
-            className="md:hidden fixed inset-0 bg-black/40 z-40 top-[70px]"
+            className="fixed inset-0 top-17.5 z-40 bg-black/40 md:hidden"
             onClick={closeMenu}
           />
           {/* Mobile Menu */}
-          <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl md:hidden top-full animate-in fade-in slide-in-from-top-2">
-            <div className="max-w-[95%] mx-auto px-4 py-6 space-y-3">
+          <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl top-full animate-in fade-in slide-in-from-top-2 md:hidden">
+            <div className="mx-auto max-w-[95%] space-y-3 px-4 py-6">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.link}
                   onClick={closeMenu}
-                  className="block px-4 py-3 text-[#2a3572] font-medium rounded-lg hover:bg-[#f0f4ff] transition-colors duration-200"
+                  className="block rounded-lg px-4 py-3 font-medium text-[#2a3572] transition-colors duration-200 hover:bg-[#f0f4ff]"
                 >
                   {item.name}
                 </Link>
               ))}
-              <YellowButton name='Suggest me a University'/>
+              <YellowButton name="Suggest me a University" />
             </div>
           </div>
         </>

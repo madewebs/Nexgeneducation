@@ -24,3 +24,13 @@ section,
 div {
   font-size: inherit;
 }
+
+/* Hide scrollbar while keeping scroll functionality */
+.scroll-smooth::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-smooth {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
