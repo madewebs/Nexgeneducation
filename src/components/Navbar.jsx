@@ -99,11 +99,11 @@ export default function Navbar() {
         <>
           {/* Overlay Backdrop */}
           <div
-            className="fixed inset-0 z-40 h-screen mt-[72px] bg-black/60 lg:hidden"
+            className="fixed inset-0 z-40 h-screen mt-[80px] bg-black/60 lg:hidden"
             onClick={closeMenu}
           />
           {/* Mobile Menu */}
-          <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl top-full animate-in fade-in slide-in-from-top-2 md:hidden">
+          <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl top-full animate-in fade-in slide-in-from-top-0 lg:hidden">
             <div className="mx-auto max-w-[95%] space-y-4 px-4 py-6">
               {navItems.map((item) => (
                 <Link
