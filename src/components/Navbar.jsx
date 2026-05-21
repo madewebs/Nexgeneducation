@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import YellowButton from "./ui/button";
 import logo from '../assets/nexgeneducationlogo.png'
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
 
   const navItems = [
     {
@@ -87,18 +99,18 @@ export default function Navbar() {
         <>
           {/* Overlay Backdrop */}
           <div
-            className="fixed inset-0 top-17.5 z-40 bg-black/40 lg:hidden"
+            className="fixed inset-0 z-40 h-screen mt-[72px] bg-black/60 lg:hidden"
             onClick={closeMenu}
           />
           {/* Mobile Menu */}
           <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl top-full animate-in fade-in slide-in-from-top-2 md:hidden">
-            <div className="mx-auto max-w-[95%] space-y-3 px-4 py-6">
+            <div className="mx-auto max-w-[95%] space-y-4 px-4 py-6">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.link}
                   onClick={closeMenu}
-                  className="block rounded-lg px-4 py-3 font-medium text-[#2a3572] transition-colors duration-200 hover:bg-[#f0f4ff]"
+                  className="block border-b border-[#e4e4e4] px-4 py-3 font-medium text-[#2a3572]"
                 >
                   {item.name}
                 </Link>

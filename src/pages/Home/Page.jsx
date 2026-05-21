@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
 import heroImage from '../../assets/img.png'
 import logo from '../../assets/nexgeneducationlogo.png'
 import contactImage from '../../assets/img1.png'
@@ -10,8 +11,75 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState("online-pg");
+  const tabsContainerRef = useRef(null);
+  const scrollTimeoutRef = useRef(null);
+  const isClickingRef = useRef(false);
+  
   const tabButtonClass =
-    "inline-flex h-12 w-44 items-center justify-center rounded-2xl px-6 font-semibold transition-all";
+    "inline-flex shrink-0 snap-center h-12 w-44 items-center justify-center rounded-2xl px-6 font-semibold transition-all";
+
+  // Array of categories in order
+  const categories = ["online-pg", "online-ug", "others", "placement-cell"];
+
+  // Helper to scroll natively using behavior: smooth
+  const smoothScrollToBtn = (btn) => {
+    if (!tabsContainerRef.current) return;
+    const containerCenter = tabsContainerRef.current.offsetWidth / 2;
+    const btnCenter = btn.offsetLeft + (btn.offsetWidth / 2);
+    const scrollPos = btnCenter - containerCenter;
+
+    // Use native smooth scrolling instead of GSAP to avoid conflict with CSS scroll snapping
+    tabsContainerRef.current.scrollTo({
+      left: scrollPos,
+      behavior: "smooth"
+    });
+  };
+
+  // GSAP animation to center the active button on mount and when category changes
+  useEffect(() => {
+    if (tabsContainerRef.current && window.innerWidth < 768) {
+      const activeBtn = tabsContainerRef.current.querySelector(`button[data-category="${selectedCategory}"]`);
+      if (activeBtn) {
+        smoothScrollToBtn(activeBtn);
+        // Reset flag after a delay to allow scroll to complete
+        setTimeout(() => {
+           isClickingRef.current = false;
+        }, 500); 
+      }
+    }
+  }, [selectedCategory]);
+
+  const handleScroll = () => {
+    if (isClickingRef.current || window.innerWidth >= 768) return;
+    
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    
+    scrollTimeoutRef.current = setTimeout(() => {
+      if (!tabsContainerRef.current) return;
+      const container = tabsContainerRef.current;
+      const containerCenter = container.offsetWidth / 2;
+      const scrollLeft = container.scrollLeft;
+      
+      let closestCategory = null;
+      let minDistance = Infinity;
+      
+      const buttons = container.querySelectorAll("button[data-category]");
+      buttons.forEach((btn) => {
+        const btnCenter = btn.offsetLeft + (btn.offsetWidth / 2) - scrollLeft;
+        const distance = Math.abs(btnCenter - containerCenter);
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCategory = btn.getAttribute("data-category");
+        }
+      });
+      
+      if (closestCategory && closestCategory !== selectedCategory) {
+        isClickingRef.current = true;
+        setSelectedCategory(closestCategory);
+      }
+    }, 150); // wait until native inertial scroll likely finishes
+  };
 
   const courseImageMap = {
     "courses1.jpg":
@@ -122,48 +190,76 @@ export default function HomePage() {
           </p>
 
           {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
+          <div 
+            ref={tabsContainerRef}
+            onScroll={handleScroll}
+            className="relative flex overflow-x-auto overflow-y-hidden md:flex-wrap md:justify-center gap-3 mb-4 md:mb-10 w-full px-[calc(50vw-88px)] md:px-0 no-scrollbar touch-pan-x snap-x snap-mandatory"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none', 
+              WebkitOverflowScrolling: 'touch' 
+            }}
+          >
             <button
-              onClick={() => setSelectedCategory("online-pg")}
+              data-category="online-pg"
+              onClick={() => { isClickingRef.current = true; setSelectedCategory("online-pg"); }}
               className={`${tabButtonClass} ${
                 selectedCategory === "online-pg"
-                  ? "bg-[#edcf2e] text-white"
+                  ? "bg-[#fce042] text-[#2a3572]active-tab"
                   : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
               }`}
             >
               Online PG
             </button>
             <button
-              onClick={() => setSelectedCategory("online-ug")}
+              data-category="online-ug"
+              onClick={() => { isClickingRef.current = true; setSelectedCategory("online-ug"); }}
               className={`${tabButtonClass} ${
                 selectedCategory === "online-ug"
-                  ? "bg-[#edcf2e] text-white"
+                  ? "bg-[#fce042] text-[#2a3572] active-tab"
                   : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
               }`}
             >
               Online UG
             </button>
             <button
-              onClick={() => setSelectedCategory("others")}
+              data-category="others"
+              onClick={() => { isClickingRef.current = true; setSelectedCategory("others"); }}
               className={`${tabButtonClass} ${
                 selectedCategory === "others"
-                  ? "bg-[#edcf2e] text-white"
+                  ? "bg-[#fce042] text-[#2a3572] active-tab"
                   : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
               }`}
             >
               Others
             </button>
             <button
-              onClick={() => setSelectedCategory("placement-cell")}
+              data-category="placement-cell"
+              onClick={() => { isClickingRef.current = true; setSelectedCategory("placement-cell"); }}
               className={`${tabButtonClass} ${
                 selectedCategory === "placement-cell"
-                  ? "bg-[#edcf2e] text-white"
+                  ? "bg-[#fce042] text-[#2a3572] active-tab"
                   : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
               }`}
             >
               Placement Cell
             </button>
           </div>
+
+          {/* Slider Dots Indicator (Mobile Only) */}
+          <div className="flex justify-center gap-2 mb-10 md:hidden">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => { isClickingRef.current = true; setSelectedCategory(cat); }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  selectedCategory === cat ? "w-6 bg-[#edcf2e]" : "w-2 bg-[#d1d5db]"
+                }`}
+                aria-label={`Go to ${cat}`}
+              />
+            ))}
+          </div>
+
           {/* Courses Grid */}
           <div className="grid grid-cols-1 gap-4 sm:gap-8 sm:grid-cols-3">
             {getCourses().map((course, index) => (
@@ -214,7 +310,7 @@ export default function HomePage() {
                   const whatsappMessage = `Hello! My name is ${name}. Email: ${email}, Phone: ${phone}. Message: ${message}`;
                   const encodedMessage = encodeURIComponent(whatsappMessage);
                   // Replace with your WhatsApp number (format: country code + number, e.g., 919876543210)
-                  const whatsappNumber = '919876543210';
+                  const whatsappNumber = '918891788828';
                   window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
                   e.target.reset();
                 }}
