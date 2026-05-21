@@ -9,10 +9,6 @@ export const routes = createBrowserRouter([
     element: <MainLayoutPage />,
     children: [
       {
-        path: "*",
-        element: <ErrorPage />,
-      },
-      {
         path: "/",
         element: <HomePage />,
       },
@@ -23,6 +19,10 @@ export const routes = createBrowserRouter([
       {
         path: "/course/:courseName",
         element: <CourseTemplatePage />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },

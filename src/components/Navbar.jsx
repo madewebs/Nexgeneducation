@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import YellowButton from "./ui/button";
-
+import logo from '../assets/nexgeneducationlogo.png'
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -34,13 +34,12 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           to="/"
-          className="flex shrink-0 items-center text-2xl font-bold leading-none text-[#2a3572] transition-colors hover:text-[#edcf2e]"
         >
-          Logoo
+          <img src={logo} alt="NexGenEducation Logo" className="h-auto w-30 md:w-36" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="absolute hidden -translate-x-1/2 left-1/2 md:flex">
+        <div className="absolute hidden -translate-x-1/2 left-1/2 lg:flex">
           <nav className="flex items-center justify-center gap-6 lg:gap-10">
             {navItems.map((item) => (
               <Link
@@ -55,14 +54,14 @@ export default function Navbar() {
           </nav>
         </div>
 
-        <div className="items-center hidden shrink-0 md:flex">
+        <div className="items-center hidden shrink-0 lg:flex">
           <YellowButton name="Suggest me a University" />
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="flex flex-col gap-1.5 p-2 focus:outline-none md:hidden"
+          className="flex flex-col gap-1.5 p-2 focus:outline-none lg:hidden"
           aria-label="Toggle menu"
         >
           <span
@@ -88,7 +87,7 @@ export default function Navbar() {
         <>
           {/* Overlay Backdrop */}
           <div
-            className="fixed inset-0 top-17.5 z-40 bg-black/40 md:hidden"
+            className="fixed inset-0 top-17.5 z-40 bg-black/40 lg:hidden"
             onClick={closeMenu}
           />
           {/* Mobile Menu */}

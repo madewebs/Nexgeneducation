@@ -20,14 +20,15 @@ const imageMap = {
 const categoryLabelMap = {
   "online-pg": "Online PG",
   "online-ug": "Online UG",
-  diploma: "Diploma",
+  others: "Others",
+  "placement-cell": "Placement Cell",
 };
 
 function findCourseByName(name) {
   const allCourses = [
     ...coursesPG.map((course) => ({ ...course, category: "online-pg" })),
     ...coursesUG.map((course) => ({ ...course, category: "online-ug" })),
-    ...coursesDiploma.map((course) => ({ ...course, category: "diploma" })),
+    ...coursesDiploma.map((course) => ({ ...course, category: "others" })),
   ];
 
   return allCourses.find(

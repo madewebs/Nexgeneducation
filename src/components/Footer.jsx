@@ -6,8 +6,6 @@ export default function Footer() {
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
     { name: "Universities", link: "/" },
-    { name: "Career", link: "/h" },
-    { name: "Contact Us", link: "/h" },
   ];
 
   return (
@@ -40,11 +38,15 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 text-lg font-semibold">Location</h3>
           <div className="space-y-3 text-sm leading-6 text-white/80">
-            <p>Nexgen Education</p>
-            <p>Chttipadi PO</p>
-            <p>Malappuram DT</p>
-            <p>Kerala, India</p>
-            <p>Pin. 676319</p>
+            <p
+              className="transition hover:text-[#facc42] block"
+            >
+              <p>Nexgen Education</p>
+              <p>Chttipadi PO</p>
+              <p>Malappuram DT</p>
+              <p>Kerala, India</p>
+              <p>Pin. 676319</p>
+            </p>
           </div>
         </div>
 
@@ -52,10 +54,21 @@ export default function Footer() {
           <h3 className="mb-4 text-lg font-semibold">Contact</h3>
           <div className="space-y-3 text-sm leading-6 text-white/80">
             <p>
-              <span className="font-semibold text-white">Contact:</span> 8891788828
+              <span className="font-semibold text-white">Contact:</span>{" "}
+              <a href="tel:+918891788828" className="transition hover:text-[#facc42]">
+                8891788828
+              </a>
             </p>
             <p>
-              <span className="font-semibold text-white">WhatsApp:</span> 8891788828
+              <span className="font-semibold text-white">WhatsApp:</span>{" "}
+              <a
+                href="https://wa.me/918891788828"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-[#facc42]"
+              >
+                8891788828
+              </a>
             </p>
             <p>
               <span className="font-semibold text-white">Email:</span>{" "}

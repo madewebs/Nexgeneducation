@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import heroImage from '../../assets/img.png'
+import logo from '../../assets/nexgeneducationlogo.png'
 import contactImage from '../../assets/img1.png'
 import YellowButton from "../../components/ui/button";
 import { coursesPG } from "../../datas/coursesPg";
@@ -70,8 +71,7 @@ export default function HomePage() {
               style={{ fontFamily: "var(--font-montserrat)" }}
               className="text-center md:text-start text-[1.75em] md:text-[2.25em] lg:text-[2.75em] xl:[3.75em] text-[#2a3572] font-medium tracking-tight leading-tight"
             >
-              Empowering students to reach world-class universities and build
-              successful global careers.
+              Empowering students through quality education and global learning opportunities.
             </h1>
             <p className="text-[#4b4b4b] text-base md:text-[1.25em] leading-snug text-center md:text-start">
               Start your study abroad journey with expert guidance, personalized
