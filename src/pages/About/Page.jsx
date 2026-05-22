@@ -61,29 +61,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <section className="mx-auto mb-12 w-full max-w-[95%] rounded-4xl bg-[#232f65] px-4 py-10 md:max-w-[80%] md:px-8 md:py-12 lg:px-10">
-        <div className="grid gap-6 text-center sm:grid-cols-3">
-          <div>
-            <p className="text-3xl font-semibold text-[#edcf2e]">5000+</p>
-            <p className="mt-2 text-sm text-white/85 md:text-base">
-              Students Guided
-            </p>
-          </div>
-          <div>
-            <p className="text-3xl font-semibold text-[#edcf2e]">100+</p>
-            <p className="mt-2 text-sm text-white/85 md:text-base">
-              Mentor Sessions Monthly
-            </p>
-          </div>
-          <div>
-            <p className="text-3xl font-semibold text-[#edcf2e]">1:1</p>
-            <p className="mt-2 text-sm text-white/85 md:text-base">
-              Personalized Counseling
-            </p>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

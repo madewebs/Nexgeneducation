@@ -24,21 +24,24 @@ const heroSlides = [
     title: "Empowering students through quality education and global learning opportunities.",
     description: "Start your study abroad journey with expert guidance, personalized counseling, and support at every step.",
     image: heroImage1,
-    button: "Suggest me a University"
+    button: "Suggest me a University",
+    link: "#courses"
   },
   {
     id: 2,
     title: "Discover top universities tailored to your career aspirations.",
     description: "We help you navigate through scholarships, admissions, and visas seamlessly.",
     image: heroImage2,
-    button: "Find Scholarships"
+    button: "Whatsapp",
+    link: "https://wa.me/918891788828"
   },
   {
     id: 3,
     title: "Your dream of studying abroad begins with the right guidance.",
     description: "We help students choose the right universities, courses, and career paths to build a successful future abroad.",
     image: heroImage3,
-    button: "Talk to an Expert"
+    button: "Talk to an Expert",
+    link: "tel:+918891788828"
   }
 ];
 
@@ -80,7 +83,7 @@ const tabButtonClass =
   "inline-flex shrink-0 snap-center h-12 w-44 items-center justify-center rounded-2xl px-6 font-semibold transition-all";
 
 // Array of categories in order
-const categories = ["online-pg", "online-ug", "others", "placement-cell"];
+const categories = ["online-pg", "online-ug", "others"];
 
 // Helper to scroll natively using behavior: smooth
 const smoothScrollToBtn = (btn) => {
@@ -168,7 +171,6 @@ const courseData = {
     ...course,
     img: courseImageMap[course.img],
   })),
-  "placement-cell": [],
 };
 
 const getCourses = () => courseData[selectedCategory] || [];
@@ -216,8 +218,16 @@ return (
                 <p className="text-[#4b4b4b] text-base md:text-[1.25em] leading-snug text-center md:text-start">
                   {slide.description}
                 </p>
-                <div className="flex justify-center gap-4 mt-4 md:max-w-sm md:mt-8 md:justify-start">
-                  <YellowButton name={slide.button} />
+                <div className="flex justify-center w-full gap-4 mt-4 md:max-w-sm md:mt-8 md:justify-start">
+                  {slide.link ? (
+                    <a href={slide.link} className="w-full md:w-auto lg:min-w-56 xl:min-w-64">
+                      <YellowButton name={slide.button} />
+                    </a>
+                  ) : (
+                    <div className="w-full md:w-auto lg:min-w-56 xl:min-w-64">
+                      <YellowButton name={slide.button} />
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -273,7 +283,7 @@ return (
 
     <section className="bg-[#232f65] rounded-4xl mx-2 py-6 md:py-10 mt-4 mb-10">
       <div className="w-full md:max-w-[80%] mx-auto px-6">
-        <p className="text-[1.65em] md:text-[2em] lg:text-[2.25em] font-medium text-center text-[#fefefe] mb-4 md:mb-4">
+        <p className="text-[1.65em] md:text-[2em] lg:text-[2.25em] font-semibold text-center text-[#fefefe] mb-4 md:mb-4">
           20 + Online Courses
         </p>
 
@@ -321,17 +331,6 @@ return (
           >
             Others
           </button>
-          <button
-            data-category="placement-cell"
-            onClick={() => { isClickingRef.current = true; setSelectedCategory("placement-cell"); }}
-            className={`${tabButtonClass} ${
-              selectedCategory === "placement-cell"
-                ? "bg-[#fce042] text-[#2a3572] active-tab"
-                : "bg-gray-100 text-[#2a3572] hover:bg-gray-200"
-            }`}
-          >
-            Placement Cell
-          </button>
         </div>
 
         {/* Slider Dots Indicator (Mobile Only) */}
@@ -369,6 +368,113 @@ return (
               </div>
             </Link>
           ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Placement Cell Section */}
+    <section className="px-4 py-10 md:py-12 md:px-6 lg:px-8 bg-[#eef7ff] border border-[#e0e0e0] mb-10 mx-2 rounded-4xl md:mx-auto md:max-w-[80%] relative overflow-hidden">
+      <div className='relative z-10 max-w-6xl mx-auto'>
+        <div className='grid items-center grid-cols-1 gap-10 lg:gap-16 md:grid-cols-2'>
+          {/* Info Column */}
+          <div className='flex flex-col justify-center space-y-6'>
+            <h2 className='text-[1.75em] md:text-[2.25em] lg:text-[2.75em] font-medium text-center md:text-left text-[#2a3572] leading-tight'>
+              Launch Your Career with Our Placement Cell
+            </h2>
+            <p className='text-center md:text-left text-[#4b4b4b] text-lg leading-tight'>
+              We connect you with top hiring partners and equip you with the necessary skills to succeed. Register your details with us to get started!
+            </p>
+            
+            <div className="flex-col hidden pt-4 space-y-4 md:flex">
+                <div className="flex items-center space-x-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#fce042]/30 shrink-0">
+                        <svg className="w-6 h-6 text-[#2a3572]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 className="text-lg font-medium text-[#2a3572]">Top Recruiters</h4>
+                        <p className="text-sm text-[#4b4b4b]">Direct connections to leading companies</p>
+                    </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#fce042]/30 shrink-0">
+                        <svg className="w-6 h-6 text-[#2a3572]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <div>
+                        <h4 className="text-lg font-medium text-[#2a3572]">Career Mentoring</h4>
+                        <p className="text-sm text-[#4b4b4b]">Expert guidance for your interviews</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          {/* Form Column */}
+          <div className='flex flex-col justify-center bg-white p-6 md:p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#e0e0e0]'>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const name = formData.get('name');
+                const phone = formData.get('phone');
+                const email = formData.get('email');
+                
+                const whatsappMessage = `Hello! I am inquiring about the Placement Cell. My name is ${name}. Email: ${email}, Phone: ${phone}.`;
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappNumber = '918891788828';
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                e.target.reset();
+              }}
+              className='space-y-4'
+            >
+              <h3 className="mb-2 text-xl font-medium text-center text-[#2a3572]">Register for Placement Assistance</h3>
+              <p className="text-sm text-center text-[#4b4b4b] mb-4">Take the first step towards your dream job</p>
+              
+              {/* Name Field */}
+              <div>
+                <label className='block mb-1.5 text-sm font-medium text-[#2a3572]'>
+                  Full Name
+                </label>
+                <input
+                  type='text'
+                  name='name'
+                  required
+                  placeholder='Enter your full name'
+                  className='w-full px-4 py-3 bg-[#f8f9fa] border border-[#e0e0e0] rounded-xl focus:outline-none transition-colors'
+                />
+              </div>
+
+              {/* Phone Number Field */}
+              <div>
+                <label className='block mb-1.5 text-sm font-medium text-[#2a3572]'>
+                  Phone Number
+                </label>
+                <input
+                  type='tel'
+                  name='phone'
+                  required
+                  placeholder='Enter your phone number'
+                  className='w-full px-4 py-3 bg-[#f8f9fa] border border-[#e0e0e0] rounded-xl focus:outline-none transition-colors'
+                />
+              </div>
+
+              {/* Email Field */}
+              <div>
+                <label className='block mb-1.5 text-sm font-medium text-[#2a3572]'>
+                  Email Address
+                </label>
+                <input
+                  type='email'
+                  name='email'
+                  required
+                  placeholder='Enter your email address'
+                  className='w-full px-4 py-3 bg-[#f8f9fa] border border-[#e0e0e0] rounded-xl focus:outline-none transition-colors'
+                />
+              </div>
+
+              <div className="pt-3">
+                <YellowButton name='Enquire via Whatsapp' type='submit' />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
