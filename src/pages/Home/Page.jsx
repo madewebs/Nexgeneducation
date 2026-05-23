@@ -195,7 +195,14 @@ const front = [
 ];
 return (
   <main className="overflow-hidden bg-linear-to-br from-[#fefefe] to-[#fffcf6]">
-    <div className="fixed bottom-8 right-6 md:right-10 z-200">
+    <div 
+      className="fixed bottom-8 right-6 md:right-10 z-200"
+      onClick={(e) => {
+          e.preventDefault();
+          const whatsappNumber = '918891788828';
+          window.open(`https://wa.me/${whatsappNumber}`, '_blank');
+          e.target.reset();
+        }}>
       <img 
         src={whatsapp}
         alt='nexxgen Whatsapp'
