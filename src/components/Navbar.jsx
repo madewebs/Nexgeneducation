@@ -29,6 +29,9 @@ export default function Navbar() {
     {
       name: "Universities",
       link: "/",
+    },{
+      name: "Contact",
+      link: "/contact",
     },
   ];
 

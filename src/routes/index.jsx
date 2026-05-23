@@ -3,6 +3,7 @@ import ErrorPage from "../pages/Error/Page";
 import MainLayoutPage from "../layouts/MainLayout";
 import HomePage from "../pages/Home/Page";
 import CourseTemplatePage from "../pages/CourseTemplate/Page";
+import ContactPage from "../pages/Contact/Page";
 import AboutPage from "../pages/About/Page";
 export const routes = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const routes = createBrowserRouter([
       {
         path: "/about",
         element: <AboutPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
       {
         path: "/course/:courseName",

@@ -4,6 +4,7 @@ import heroImage1 from '../../assets/img1.png'
 import heroImage2 from '../../assets/img2.png'
 import logo from '../../assets/nexgeneducationlogo.png'
 import heroImage3 from '../../assets/img3.png'
+import whatsapp from '../../assets/ui/whatsapp.png'
 import contactImage from '../../assets/contact.png'
 import YellowButton from "../../components/ui/button";
 import { coursesPG } from "../../datas/coursesPg";
@@ -194,6 +195,13 @@ const front = [
 ];
 return (
   <main className="overflow-hidden bg-linear-to-br from-[#fefefe] to-[#fffcf6]">
+    <div className="fixed bottom-8 right-6 md:right-10 z-200">
+      <img 
+        src={whatsapp}
+        alt='nexxgen Whatsapp'
+        className="h-14 w-14 md:h-16 md:w-16"
+         />
+    </div>
     <section className="flex flex-col justify-center md:mx-auto w-full md:max-w-[80%] px-4 md:px-6 lg:px-8 min-h-[60vh] md:min-h-[80vh]">
       <div 
         className="relative w-full overflow-hidden touch-pan-y"
