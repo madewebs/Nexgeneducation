@@ -31,9 +31,19 @@ function findCourseByName(name) {
     ...coursesDiploma.map((course) => ({ ...course, category: "others" })),
   ];
 
-  return allCourses.find(
+  const course = allCourses.find(
     (course) => course.name.toLowerCase() === decodeURIComponent(name).toLowerCase()
   );
+
+  if (course) {
+    return {
+      ...course,
+      universities: course.universities || [],
+      colleges: course.colleges || [],
+      accreditation: course.accreditation || [],
+    };
+  }
+  return undefined;
 }
 
 export default function CourseTemplatePage() {
@@ -44,14 +54,25 @@ export default function CourseTemplatePage() {
     window.scrollTo(0, 0);
   }, [courseName]);
 
+  const courseFromState = state?.course;
   const fallbackCourse = findCourseByName(courseName || "");
-  const course = state?.course || fallbackCourse;
+  
+  let course = courseFromState || fallbackCourse;
+  if (course) {
+    course = {
+      ...course,
+      universities: course.universities || [],
+      colleges: course.colleges || [],
+      accreditation: course.accreditation || [],
+    };
+  }
+
   const category = state?.category || fallbackCourse?.category;
 
   if (!course) {
     return (
       <section className="min-h-[70vh] px-4 py-20 md:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-[#e4e4e4] bg-white p-10 text-center">
+        <div className="mx-auto max-w-6xl rounded-3xl border border-[#e4e4e4] bg-white p-10 text-center">
           <h1 className="text-3xl font-semibold text-[#2a3572]">Course Not Found</h1>
           <p className="mt-3 text-[#4b4b4b]">The selected course could not be loaded.</p>
           <Link
@@ -78,29 +99,28 @@ export default function CourseTemplatePage() {
           Back to Courses
         </Link>
 
-        <div className="grid gap-8 overflow-hidden rounded-4xl border border-[#e4e4e4] bg-white p-4 md:grid-cols-2 md:p-8">
+        <div className="grid gap-8 overflow-hidden rounded-4xl border border-[#e4e4e4] bg-white p-4 md:p-8">
           <div className="overflow-hidden rounded-3xl">
             <img
               src={courseImage}
               alt={course.name}
-              className="object-cover w-full h-full min-h-65"
+              className="object-cover w-full h-full max-h-[500px]"
             />
           </div>
 
           <div className="flex flex-col justify-center">
-            <p className="mb-3 inline-flex w-fit rounded-full bg-[#eef7ff] px-4 py-1 text-sm font-medium text-[#2a3572]">
+            <p className="mb-3 inline-flex w-fit rounded-full text-sm font-medium text-[#2a3572]">
               {categoryLabel}
             </p>
             <h1 className="text-[1.8em] font-semibold text-[#2a3572] md:text-[2.2em]">{course.name}</h1>
             <p className="mt-4 text-[#4b4b4b]">
-              This is the template page for <span className="font-semibold">{course.name}</span>. You can use
-              this same layout for all courses and load each course's data dynamically.
+              {course.description}
             </p>
 
             <ul className="mt-5 space-y-2 text-[#4b4b4b]">
-              <li>Duration: 2 Years (Typical)</li>
-              <li>Mode: Online / Hybrid</li>
-              <li>Support: Mentorship + Placement Guidance</li>
+              <li>Duration: {course.duration}</li>
+              <li>Mode: {course.mode}</li>
+              <li>Support: {course.support}</li>
             </ul>
 
             <Link
@@ -111,7 +131,29 @@ export default function CourseTemplatePage() {
             </Link>
           </div>
         </div>
+
+        <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-3">
+          <div className="p-6 bg-white border border-[#e4e4e4] rounded-4xl">
+            <h2 className="text-xl font-semibold text-[#2a3572]">Universities</h2>
+            <ul className="mt-2 space-y-1 text-[#4b4b4b]">
+              {course.universities.map(uni => <li key={uni}>{uni}</li>)}
+            </ul>
+          </div>
+          <div className="p-6 bg-white border border-[#e4e4e4] rounded-4xl">
+            <h2 className="text-xl font-semibold text-[#2a3572]">Colleges</h2>
+            <ul className="mt-2 space-y-1 text-[#4b4b4b]">
+              {course.colleges.map(col => <li key={col}>{col}</li>)}
+            </ul>
+          </div>
+          <div className="p-6 bg-white border border-[#e4e4e4] rounded-4xl">
+            <h2 className="text-xl font-semibold text-[#2a3572]">Accreditation</h2>
+            <ul className="mt-2 space-y-1 text-[#4b4b4b]">
+              {course.accreditation.map(acc => <li key={acc}>{acc}</li>)}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+``

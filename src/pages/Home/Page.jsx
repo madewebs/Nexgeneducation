@@ -26,7 +26,7 @@ const heroSlides = [
     description: "Start your study abroad journey with expert guidance, personalized counseling, and support at every step.",
     image: heroImage1,
     button: "Suggest me a University",
-    link: "#courses"
+    link: "/suggest-university"
   },
   {
     id: 2,
@@ -236,7 +236,7 @@ return (
                 <div className="flex justify-center w-full gap-4 mt-4 md:max-w-sm md:mt-8 md:justify-start">
                   {slide.link ? (
                     <a href={slide.link} className="w-full md:w-auto lg:min-w-56 xl:min-w-64">
-                      <YellowButton name={slide.button} />
+                      <YellowButton name={slide.button} className="cursor-pointer" />
                     </a>
                   ) : (
                     <div className="w-full md:w-auto lg:min-w-56 xl:min-w-64">

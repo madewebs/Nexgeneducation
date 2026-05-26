@@ -70,7 +70,9 @@ export default function Navbar() {
         </div>
 
         <div className="items-center hidden shrink-0 lg:flex">
-          <YellowButton name="Suggest me a University" />
+          <Link to="/suggest-university">
+            <YellowButton name="Suggest me a University" className="cursor-pointer" />
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}

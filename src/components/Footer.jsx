@@ -38,7 +38,7 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 text-lg font-semibold">Location</h3>
           <div className="space-y-3 text-sm leading-6 text-white/80">
-            <p
+            <div
               className="transition hover:text-[#facc42] block"
             >
               <p>Nexgen Education</p>
@@ -46,7 +46,7 @@ export default function Footer() {
               <p>Malappuram DT</p>
               <p>Kerala, India</p>
               <p>Pin. 676319</p>
-            </p>
+            </div>
           </div>
         </div>
 
