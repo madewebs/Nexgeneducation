@@ -5,6 +5,8 @@ import HomePage from "../pages/Home/Page";
 import CourseTemplatePage from "../pages/CourseTemplate/Page";
 import ContactPage from "../pages/Contact/Page";
 import AboutPage from "../pages/About/Page";
+import SuggestUniversityPage from "../pages/SuggestUniversity/Page";
+
 export const routes = createBrowserRouter([
   {
     element: <MainLayoutPage />,
@@ -20,6 +22,10 @@ export const routes = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/suggest-university",
+        element: <SuggestUniversityPage />,
       },
       {
         path: "/course/:courseName",
