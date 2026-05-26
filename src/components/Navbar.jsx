@@ -120,7 +120,11 @@ export default function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <YellowButton name="Suggest me a University" />
+            <div className="flex items-center w-full">
+              <Link to="/suggest-university" onClick={closeMenu} className="w-full">
+                <YellowButton name="Suggest me a University" className="cursor-pointer" />
+              </Link>
+            </div>
             </div>
           </div>
         </>

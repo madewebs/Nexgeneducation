@@ -132,7 +132,7 @@ export default function CourseTemplatePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 mt-4">
           <div className="p-6 bg-white border border-[#e4e4e4] rounded-4xl">
             <h2 className="text-xl font-semibold text-[#2a3572]">Universities</h2>
             <ul className="mt-2 space-y-1 text-[#4b4b4b]">
