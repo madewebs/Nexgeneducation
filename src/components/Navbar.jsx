@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import YellowButton from "./ui/button";
 import logo from '../assets/nexgeneducationlogo.png'
 export default function Navbar() {
@@ -25,6 +26,10 @@ export default function Navbar() {
     {
       name: "About",
       link: "/about",
+    },
+    {
+      name: "Courses",
+      link: "/#courses",
     },
     {
       name: "Universities",
@@ -57,14 +62,15 @@ export default function Navbar() {
         <div className="absolute hidden -translate-x-1/2 left-1/2 lg:flex">
           <nav className="flex items-center justify-center gap-6 lg:gap-10">
             {navItems.map((item) => (
-              <Link
+              <HashLink
                 key={item.name}
                 to={item.link}
+                smooth
                 className="group relative inline-flex items-center py-2 text-md font-medium text-[#2a3572] transition-colors duration-200 hover:text-[#edcf2e]"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-[#edcf2e] transition-all duration-300 group-hover:w-full" />
-              </Link>
+              </HashLink>
             ))}
           </nav>
         </div>

@@ -22,24 +22,24 @@ const [currentSlide, setCurrentSlide] = useState(0);
 const heroSlides = [
   {
     id: 1,
-    title: "Empowering students through quality education and global learning opportunities.",
-    description: "Start your study abroad journey with expert guidance, personalized counseling, and support at every step.",
+    title: "Knowledge at your fingertips",
+    description: "Whether you are a worker or a housewife anywhere in the world you can get your education we help you for a better tomorrow click here today",
     image: heroImage1,
     button: "Suggest me a University",
     link: "/suggest-university"
   },
   {
     id: 2,
-    title: "Discover top universities tailored to your career aspirations.",
-    description: "We help you navigate through scholarships, admissions, and visas seamlessly.",
+    title: "Bringing world-class education right to your screen",
+    description: "No longer will your work be a hindrance to your studies. Click here today for a better future tomorrow. with the help of our expert career guidance coaches",
     image: heroImage2,
     button: "Whatsapp",
     link: "https://wa.me/918891788828"
   },
   {
     id: 3,
-    title: "Your dream of studying abroad begins with the right guidance.",
-    description: "We help students choose the right universities, courses, and career paths to build a successful future abroad.",
+    title: "Education without borders, learning without limits",
+    description: "Learn anywhere, achieve everywhere. Click here today for your better tomorrow",
     image: heroImage3,
     button: "Talk to an Expert",
     link: "tel:+918891788828"
@@ -226,7 +226,7 @@ return (
               <div className="space-y-3 md:space-y-6 md:w-1/2">
                 <h1
                   style={{ fontFamily: "var(--font-montserrat)" }}
-                  className="text-center md:text-start text-[1.75em] md:text-[2.25em] lg:text-[2.75em] xl:[3.75em] text-[#2a3572] font-medium tracking-tight leading-tight"
+                  className="text-center md:text-start text-[1.95em] md:text-[2.5em] lg:text-[2.95em] xl:[3.95em] text-[#2a3572] font-medium tracking-tight leading-tight"
                 >
                   {slide.title}
                 </h1>
@@ -296,7 +296,7 @@ return (
       </div>
     </section>
 
-    <section className="bg-[#232f65] rounded-4xl mx-2 py-6 md:py-10 mt-4 mb-10">
+    <section id="courses" className="bg-[#232f65] rounded-4xl mx-2 py-6 md:py-10 mt-4 mb-10">
       <div className="w-full md:max-w-[80%] mx-auto px-6">
         <p className="text-[1.65em] md:text-[2em] lg:text-[2.25em] font-semibold text-center text-[#fefefe] mb-4 md:mb-4">
           20 + Online Courses
