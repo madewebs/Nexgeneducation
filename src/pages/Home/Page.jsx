@@ -5,6 +5,7 @@ import heroImage2 from '../../assets/img2.png'
 import logo from '../../assets/nexgeneducationlogo.png'
 import heroImage3 from '../../assets/img3.png'
 import whatsapp from '../../assets/ui/whatsapp.png'
+import wpButton from '../../assets/ui/wpButton.png'
 import contactImage from '../../assets/contact.png'
 import YellowButton from "../../components/ui/button";
 import { coursesPG } from "../../datas/coursesPg";
@@ -234,15 +235,17 @@ return (
                   {slide.description}
                 </p>
                 <div className="flex justify-center w-full gap-4 mt-4 md:max-w-sm md:mt-8 md:justify-start">
-                  {slide.link ? (
-                    <a href={slide.link} className="w-full md:w-auto lg:min-w-56 xl:min-w-64">
+                  { slide.id==2 ? (
+                    <a href={slide.link} className="w-full gap-2 md:w-auto lg:min-w-56 xl:min-w-64">
+                      <YellowButton name={slide.button} className="cursor-pointer" >
+                        <img src={wpButton} alt="whatsapp" className="w-6 h-6" />
+                      </YellowButton>
+                    </a>):
+                    (
+                      <a href={slide.link} className="w-full md:w-auto lg:min-w-56 xl:min-w-64">
                       <YellowButton name={slide.button} className="cursor-pointer" />
-                    </a>
-                  ) : (
-                    <div className="w-full md:w-auto lg:min-w-56 xl:min-w-64">
-                      <YellowButton name={slide.button} />
-                    </div>
-                  )}
+                    </a>)
+                    }
                 </div>
               </div>
 
