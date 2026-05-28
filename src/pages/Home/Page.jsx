@@ -184,8 +184,8 @@ const front = [
   },
   {
     img: "https://img.icons8.com/ios-filled/100/2a3572/medal2.png",
-    head: "India's 1st",
-    sub: "Suggestion Platform",
+    head: "22 years of Experience",
+    sub: "In Education field",
   },
   {
     img: "https://img.icons8.com/ios-filled/100/2a3572/comments.png",
@@ -287,7 +287,7 @@ return (
               alt={item.head}
               className="object-contain w-6 h-6 mx-auto"
             />
-            <p className="font-semibold text-lg md:text-xl text-[#2a3572]">
+            <p className="font-semibold text-center leading-tight text-md md:text-xl text-[#2a3572]">
               {item.head}
             </p>
             <p className="text-xs md:text-base text-[#4b4b4b]">{item.sub}</p>

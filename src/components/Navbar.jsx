@@ -117,14 +117,15 @@ export default function Navbar() {
           <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl top-full animate-in fade-in slide-in-from-top-0 lg:hidden">
             <div className="mx-auto max-w-[95%] space-y-4 px-4 py-6">
               {navItems.map((item) => (
-                <Link
+                <HashLink
                   key={item.name}
                   to={item.link}
+                  smooth
                   onClick={closeMenu}
                   className="block border-b border-[#e4e4e4] px-4 py-3 font-medium text-[#2a3572]"
                 >
                   {item.name}
-                </Link>
+                </HashLink>
               ))}
             <div className="flex items-center w-full">
               <Link to="/suggest-university" onClick={closeMenu} className="w-full">
