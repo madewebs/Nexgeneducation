@@ -8,9 +8,7 @@ export default function ErrorPage() {
           <p className="items-center text-4xl text-center">404</p>
           <p className="text-2xl">Page Not Found</p>
       </div>
-      <div  className="mt-4 p-4 bg-[#232f65] text-[#fefefe] rounded-xl ">
-        <Link to="/">Return to Home page</Link>
-      </div>
+        <Link className="mt-4 p-4 bg-[#232f65] text-[#fefefe] rounded-xl" to="/">Return to Home page</Link>
     </div>
   );
 }
