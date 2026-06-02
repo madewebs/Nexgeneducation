@@ -62,7 +62,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="absolute hidden -translate-x-1/2 left-1/2 lg:flex">
+        <div className="absolute hidden -translate-x-1/2 left-1/2 xl:flex">
           <nav className="flex items-center justify-center gap-6 lg:gap-10">
             {navItems.map((item) => (
               <HashLink
@@ -78,7 +78,7 @@ export default function Navbar() {
           </nav>
         </div>
 
-        <div className="items-center hidden shrink-0 lg:flex">
+        <div className="items-center hidden shrink-0 xl:flex">
           <Link to="/suggest-university">
             <YellowButton name="Suggest me a University" className="cursor-pointer" />
           </Link>
@@ -87,7 +87,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMenu}
-          className="flex flex-col gap-1.5 p-2 focus:outline-none lg:hidden"
+          className="flex flex-col gap-1.5 p-2 focus:outline-none xl:hidden"
           aria-label="Toggle menu"
         >
           <span
@@ -113,11 +113,11 @@ export default function Navbar() {
         <>
           {/* Overlay Backdrop */}
           <div
-            className="fixed inset-0 z-40 h-screen mt-[80px] bg-black/60 lg:hidden"
+            className="fixed inset-0 z-40 h-screen mt-[80px] bg-black/60 xl:hidden"
             onClick={closeMenu}
           />
           {/* Mobile Menu */}
-          <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl top-full animate-in fade-in slide-in-from-top-0 lg:hidden">
+          <div className="absolute left-0 right-0 z-50 duration-300 bg-white shadow-2xl top-full animate-in fade-in slide-in-from-top-0 xl:hidden">
             <div className="mx-auto max-w-[95%] space-y-4 px-4 py-6">
               {navItems.map((item) => (
                 <HashLink
