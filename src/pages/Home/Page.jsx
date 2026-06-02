@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
-import heroImage1 from '../../assets/img1.png'
-import heroImage2 from '../../assets/img2.png'
+import heroImage1 from '../../assets/img1.webp'
+import heroImage2 from '../../assets/img2.webp'
 import logo from '../../assets/nexgeneducationlogo.png'
-import heroImage3 from '../../assets/img3.png'
+import heroImage3 from '../../assets/img3.webp'
 import whatsapp from '../../assets/ui/whatsapp.png'
 import wpButton from '../../assets/ui/wpButton.png'
 import contactImage from '../../assets/contact.png'
@@ -207,7 +207,10 @@ return (
       <img 
         src={whatsapp}
         alt='nexxgen Whatsapp'
+        draggable={false}
+        onContextMenu={(e) => e.preventDefault()}
         className="h-14 w-14 md:h-16 md:w-16"
+        loading="lazy"
          />
     </div>
     <section className="flex flex-col justify-center md:mx-auto w-full md:max-w-[80%] px-4 md:px-6 lg:px-8 min-h-[60vh] md:min-h-[80vh]">
@@ -238,7 +241,7 @@ return (
                   { slide.id==2 ? (
                     <a href={slide.link} className="w-full gap-2 md:w-auto lg:min-w-56 xl:min-w-64">
                       <YellowButton name={slide.button} className="cursor-pointer" >
-                        <img src={wpButton} alt="whatsapp" className="w-6 h-6" />
+                        <img src={wpButton} alt="whatsapp" className="w-6 h-6" onContextMenu={(e) => e.preventDefault()} loading="lazy"/>
                       </YellowButton>
                     </a>):
                     (
@@ -256,6 +259,9 @@ return (
                   <img
                     src={slide.image}
                     alt="Hero illustration"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
+                    loading="lazy"
                     className="relative z-10 object-contain w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px]"
                   />
                 </div>
@@ -288,6 +294,8 @@ return (
             <img
               src={item.img}
               alt={item.head}
+              loading="lazy"
+              onContextMenu={(e) => e.preventDefault()}
               className="object-contain w-6 h-6 mx-auto"
             />
             <p className="font-semibold text-center leading-tight text-md md:text-xl text-[#2a3572]">
@@ -378,6 +386,8 @@ return (
                 <img
                   src={course.img}
                   alt={course.name}
+                  loading="lazy"
+                  onContextMenu={(e) => e.preventDefault()}
                   className="absolute inset-0 object-cover object-center w-full h-full"
                 />
               </div>
@@ -592,8 +602,10 @@ return (
             <div className='relative w-full max-w-md'>
               <div className='absolute inset-0 -z-10 rounded-3xl blur-2xl opacity-40' />
               <img
+                loading="lazy"
                 src={contactImage}
                 alt='Contact us illustration'
+                onContextMenu={(e) => e.preventDefault()}
                 className='object-cover w-full h-auto rounded-3xl'
               />
             </div>

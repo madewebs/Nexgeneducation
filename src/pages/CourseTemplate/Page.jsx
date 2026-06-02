@@ -104,6 +104,8 @@ export default function CourseTemplatePage() {
             <img
               src={courseImage}
               alt={course.name}
+              loading="lazy"
+              onContextMenu={(e) => e.preventDefault()}
               className="object-cover w-full h-full max-h-[500px]"
             />
           </div>

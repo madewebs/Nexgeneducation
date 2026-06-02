@@ -4,6 +4,9 @@ import contactImage from '../../assets/contact.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+
+
+
 export default function ContactPage() {
   return (
     <section className='bg-[#232f65] rounded-4xl mx-2 py-6 md:py-10 mt-4 mb-10 p-4'>
@@ -100,8 +103,10 @@ export default function ContactPage() {
             <div className='relative w-full max-w-md'>
               <div className='absolute inset-0 -z-10 rounded-3xl blur-2xl opacity-40' />
               <img
+                loading="lazy"
                 src={contactImage}
                 alt='Contact us illustration'
+                onContextMenu={(e) => e.preventDefault()}
                 className='object-cover w-full h-auto rounded-3xl'
               />
             </div>
@@ -110,17 +115,17 @@ export default function ContactPage() {
 
         {/* Direct Contact Channels */}
         <div className='mt-8 pt-8 border-t border-[#fefefe]/10'>
-          <div className='text-center mb-6'>
+          <div className='mb-6 text-center'>
             <p className='text-[#fefefe]/60 text-sm max-w-md mx-auto'>
               Prefer direct communication? Reach out to us instantly through any of the channels below.
             </p>
           </div>
 
-          <div className='grid grid-cols-3 gap-6 max-w-2xl mx-auto'>
+          <div className='grid max-w-2xl grid-cols-3 gap-6 mx-auto'>
             {/* Phone Card */}
             <a
               href='tel:+918891788828'
-              className='relative overflow-hidden flex flex-col items-center text-center p-6 lg:p-8'
+              className='relative flex flex-col items-center p-6 overflow-hidden text-center lg:p-8'
             >
               <div className='text-[#facc42] flex items-center justify-center mb-2'>
                 <FontAwesomeIcon icon={faPhone} size='2xl' />
@@ -133,9 +138,9 @@ export default function ContactPage() {
               href='https://wa.me/918891788828'
               target='_blank'
               rel='noopener noreferrer'
-              className='relative overflow-hidden flex flex-col items-center text-center p-6 lg:p-8'
+              className='relative flex flex-col items-center p-6 overflow-hidden text-center lg:p-8'
             >
-              <div className='text-green-400 flex items-center justify-center text-2xl mb-2'>
+              <div className='flex items-center justify-center mb-2 text-2xl text-green-400'>
                 <FontAwesomeIcon icon={faWhatsapp} size='2xl' />
               </div>
               <h3 className='text-xs md:text-sm text-[#fefefe]/60 font-medium uppercase tracking-wider'>WhatsApp Chat</h3>
@@ -144,9 +149,9 @@ export default function ContactPage() {
             {/* Email Card */}
             <a
               href='mailto:nexgeneduind@gmail.com'
-              className='relative overflow-hidden flex flex-col items-center text-center p-6 lg:p-8'
+              className='relative flex flex-col items-center p-6 overflow-hidden text-center lg:p-8'
             >
-              <div className='text-blue-400 flex items-center justify-center text-2xl mb-2'>
+              <div className='flex items-center justify-center mb-2 text-2xl text-blue-400'>
                 <FontAwesomeIcon icon={faEnvelope} size='2xl' />
               </div>
               <h3 className='text-xs md:text-sm text-[#fefefe]/60 font-medium uppercase tracking-wider'>Email Address</h3>

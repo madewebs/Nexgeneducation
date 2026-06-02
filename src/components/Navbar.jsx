@@ -55,7 +55,10 @@ export default function Navbar() {
         <Link
           to="/"
         >
-          <img src={logo} alt="NexGenEducation Logo" className="h-auto w-30 md:w-36" />
+          <img src={logo} alt="NexGenEducation Logo"
+          loading="lazy" 
+          onContextMenu={(e) => e.preventDefault()}
+          className="h-auto w-30 md:w-36" />
         </Link>
 
         {/* Desktop Navigation */}
